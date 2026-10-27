@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function () {
+        try {
+          var _rawFetch = window.fetch;
+          var _currentFetch = function () {
+            return (_rawFetch || window.fetch).apply(window, arguments);
+          };
+
+          var getter = function () {
+            return _currentFetch;
+          };
+
+          var setter = function (fn) {
+            _currentFetch = fn;
+          };
+
+          try {
+            Object.defineProperty(window, 'fetch', {
+              get: getter,
+              set: setter,
+              configurable: true,
+              enumerable: true,
+            });
+          } catch (e) {}
+
+          if (typeof Window !== 'undefined' && Window.prototype) {
+            try {
+              Object.defineProperty(Window.prototype, 'fetch', {
+                get: getter,
+                set: setter,
+                configurable: true,
+                enumerable: true,
+              });
+            } catch (e) {}
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <title>Aura Gold & Asset Price Checker</title>
+    <meta name="description" content="Find Indian GST HSN and SAC codes, lookup bank branches by IFSC via Razorpay, search mutual funds via mfapi.in, and track spot gold prices. Education only, not investment advice." />
+    <meta property="og:title" content="Aura Gold & Asset Price Checker" />
+    <meta property="og:description" content="Find Indian GST HSN and SAC codes, lookup bank branches by IFSC via Razorpay, search mutual funds via mfapi.in, and track spot gold prices. Education only, not investment advice." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="./assets/index-Br--Bhuq.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-D8iozOpp.css">
+  </head>
+  <body class="bg-[#0B0E14] text-slate-100 antialiased selection:bg-[#E5A93C]/30 selection:text-[#F3CA65]">
+    <div id="root"></div>
+  </body>
+</html>
